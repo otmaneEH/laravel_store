@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/home', [HomeController::class, 'index']);
+
+
+Route::get('/welcome', function () {
+    return view('welcome')->with('name', 'otmane');
+});
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home/{age?}', 'HomeController@index');
